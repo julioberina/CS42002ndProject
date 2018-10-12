@@ -5,22 +5,32 @@ public class Timer
     private long totalTime;
     private long temp;
     private int successCount;
-    
+
     public Timing()
     {
-        size=0;
-        totalCost=0;
-        totalTime=0;
-        temp=0;
+        size = 0;
+        totalCost = 0;
+        totalTime = 0;
+        temp = 0;
     }
     public long getAveCost()
     {
         return totalCost/size;
     }
 
+    public void incTotalCostBy(int num)
+    {
+        totalCost += num;
+    }
+
+    public void incSize()
+    {
+        ++size;
+    }
+
     public void startTime()
     {
-        temp=System.nanoTime();
+        temp = System.nanoTime();
     }
 
     public void endTime()
@@ -28,9 +38,14 @@ public class Timer
         totalTime += temp - System.nanoTime();
     }
 
+    public void incSuccessCount()
+    {
+        ++successCount;
+    }
+
     public long getAveTime()
     {
-        return totalTime/size;
+        return totalTime / size;
     }
 
     public double successRate()

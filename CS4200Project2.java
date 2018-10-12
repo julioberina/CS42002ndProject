@@ -29,9 +29,9 @@ public class Cs420Project2
 
         System.out.println("Testing Simulated Annealing");
         for(int i = 0; i < testCount; ++i)
-            d1.execute(new Nqueen(n));
+            d1.execute(new NQueen(n));
 
-        for(int i=0; i<testCount; ++i)
+        for(int i = 0; i < testCount; ++i)
         {
             System.out.println("Working on Genetic Algorithm");
             System.out.println("Iteration " + i);
@@ -39,7 +39,7 @@ public class Cs420Project2
             // population.clear()
             for(int j=0; j<500; j++)
             {
-                population.add(new Nqueen(n));
+                population.add(new NQueen(n));
             }
             da.execute(population);
         }
