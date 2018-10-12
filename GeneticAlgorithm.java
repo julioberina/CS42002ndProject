@@ -17,6 +17,7 @@ public class GeneticAlgorithm
 
     public NQueen execute()
     {
+        timer.incSize();
         population.clear();
 
         for(int j = 0; j < 500; ++j)
