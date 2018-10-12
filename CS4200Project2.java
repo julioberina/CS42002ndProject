@@ -11,37 +11,20 @@ public class Cs420Project2
     {
         int n = 21;
 
-          // PriorityQueue<Nqueen> population = new PriorityQueue<Nqueen>(10,(Nqueen a, Nqueen b)
-          //         ->{
-          //         a.staleCount++;
-          //         if(a.value() == b.value()){
-          //
-          //             return a.staleCount - b.staleCount;
-          //         }
-          //         return a.value() - b.value();
-          //     }) ;
-
-
         SimulatedAnnealing sa = new SimulatedAnnealing();
         GeneticAlgorithm da = new GeneticAlgorithm();
 
-        int testCount =1000;
+        int testCount = 1000;
 
-        System.out.println("Testing Simulated Annealing");
+        System.out.println("Testing Simulated Annealing...");
         for(int i = 0; i < testCount; ++i)
-            d1.execute(new NQueen(n));
+            sa.execute(new NQueen(n));
 
+        System.out.println("Testing Genetic Algorithm...");
         for(int i = 0; i < testCount; ++i)
         {
-            System.out.println("Working on Genetic Algorithm");
             System.out.println("Iteration " + i);
-
-            // population.clear()
-            for(int j=0; j<500; j++)
-            {
-                population.add(new NQueen(n));
-            }
-            da.execute(population);
+            da.execute();
         }
 
         System.out.println("Simulated Annealing average cost: " + sa.getAveCost() + "\n");
