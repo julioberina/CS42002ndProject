@@ -1,10 +1,10 @@
 import java.util.PriorityQueue;
 import java.util.Random;
 
-public class GeneticDriver
+public class GeneticAlgorithm
 {
     private static Random rand = new Random();
-    private static Timer timer = new Timer();
+    public static Timer timer = new Timer();
     private static PriorityQueue<NQueen> population = new PriorityQueue<NQueen>(10, (NQueen a, NQueen b)
            ->{
            a.mature();
@@ -20,7 +20,7 @@ public class GeneticDriver
         population.clear();
 
         for(int j = 0; j < 500; ++j)
-            population.add(new NQueen(n));
+            population.add(new NQueen(21));
 
         NQueen current = population.peek();
 
@@ -30,8 +30,8 @@ public class GeneticDriver
         {
             --max;
             timer.incTotalCostBy(1);
-            NQueen x = pop.poll();
-            NQueen y = pop.poll();
+            NQueen x = population.poll();
+            NQueen y = population.poll();
             NQueen child = x.reproduce(y);
 
             if (child.clashes() == 0)
@@ -47,13 +47,13 @@ public class GeneticDriver
                 break;
             }
 
-            pop.add(x);
-            pop.add(y);
-            pop.add(child);
+            population.add(x);
+            population.add(y);
+            population.add(child);
         }
 
         timer.endTime();
-        if (current.clashes()==0)   timer.incSuccessCount();
+        if (current.clashes() == 0)   timer.incSuccessCount();
         return current;
     }
 }

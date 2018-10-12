@@ -26,7 +26,8 @@ public class NQueen
         for(int i = 0; i < n; ++i)
             test.add(i);
 
-        Collections.shuffle(test, Cs420Project2.rand);
+        Collections.shuffle(test, rand);
+
         for (int j = 0; j < test.size(); ++j)
             state[j] = test.get(j);
 
@@ -102,6 +103,11 @@ public class NQueen
             val = rand.nextInt(n);
 
         state[pos] = val;
+    }
+
+    public void mature()
+    {
+        ++age;
     }
 
     public NQueen reproduce(NQueen mate)

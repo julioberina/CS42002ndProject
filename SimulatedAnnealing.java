@@ -1,6 +1,6 @@
 public class SimulatedAnnealing
 {
-    private static Timer timer = new Timer();
+    public static Timer timer = new Timer();
 
     public NQueen execute(NQueen n)
     {
@@ -12,16 +12,12 @@ public class SimulatedAnnealing
 
         timer.startTime();
 
-        while (currentState.value() != 0)
+        while (currentState.clashes() != 0)
         {
-            double delta;
-            double probability;
-            double rand;
-
             for (double time = 1.0; time < 1000.0; ++time)
             {
                 nextState = currentState.randomChild();
-                delta = currentState.value() - nextState.value();
+                delta = currentState.clashes() - nextState.clashes();
                 probability = Math.exp(delta / schedule(time));
                 rand = Math.random();
 
@@ -33,7 +29,7 @@ public class SimulatedAnnealing
         }
 
         timer.incTotalCostBy(count);
-        endTime();
+        timer.endTime();
         timer.incSize();
         return currentState;
     }

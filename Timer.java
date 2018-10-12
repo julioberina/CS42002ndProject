@@ -6,7 +6,7 @@ public class Timer
     private long temp;
     private int successCount;
 
-    public Timing()
+    public Timer()
     {
         size = 0;
         totalCost = 0;
@@ -15,7 +15,7 @@ public class Timer
     }
     public long getAveCost()
     {
-        return totalCost/size;
+        return totalCost / size;
     }
 
     public void incTotalCostBy(int num)

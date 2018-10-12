@@ -5,14 +5,14 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-public class Cs420Project2
+public class CS4200Project2
 {
     public static void main(String[] args)
     {
         int n = 21;
 
         SimulatedAnnealing sa = new SimulatedAnnealing();
-        GeneticAlgorithm da = new GeneticAlgorithm();
+        GeneticAlgorithm ga = new GeneticAlgorithm();
 
         int testCount = 1000;
 
@@ -24,12 +24,12 @@ public class Cs420Project2
         for(int i = 0; i < testCount; ++i)
         {
             System.out.println("Iteration " + i);
-            da.execute();
+            ga.execute();
         }
 
-        System.out.println("Simulated Annealing average cost: " + sa.getAveCost() + "\n");
-        System.out.println("Genetic Algorithm average cost: " + da.getAveCost());
-        System.out.println("Genetic Algorithm success rate: " + da.successRate() + "%");
-        System.out.println("Genetic Algorithm success total: " + da.successCount());
+        System.out.println("Simulated Annealing average cost: " + sa.timer.getAveCost() + "\n");
+        System.out.println("Genetic Algorithm average cost: " + ga.timer.getAveCost());
+        System.out.println("Genetic Algorithm success rate: " + ga.timer.successRate() + "%");
+        System.out.println("Genetic Algorithm success total: " + ga.timer.successCount());
     }
 }
