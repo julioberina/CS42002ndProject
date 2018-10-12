@@ -47,6 +47,11 @@ public class NQueen
         return new NQueen(newState);
     }
 
+    public int age()
+    {
+        return this.age;
+    }
+
     public int clashes()
     {
         return this.clashes;
