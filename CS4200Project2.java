@@ -14,22 +14,36 @@ public class CS4200Project2
         SimulatedAnnealing sa = new SimulatedAnnealing();
         GeneticAlgorithm ga = new GeneticAlgorithm();
 
-        int testCount = 1000;
-
-        System.out.println("Testing Simulated Annealing...");
-        for(int i = 0; i < testCount; ++i)
-            sa.execute(new NQueen(n));
-
-        System.out.println("Testing Genetic Algorithm...");
-        for(int i = 0; i < testCount; ++i)
+        if (args.length > 0 && args[0].equals("test"))
         {
-            System.out.println("Iteration " + i);
-            ga.execute();
-        }
+            int testCount = 1000;
 
-        System.out.println("Simulated Annealing average cost: " + sa.timer.getAveCost() + "\n");
-        System.out.println("Genetic Algorithm average cost: " + ga.timer.getAveCost());
-        System.out.println("Genetic Algorithm success rate: " + ga.timer.successRate() + "%");
-        System.out.println("Genetic Algorithm success total: " + ga.timer.successCount());
+            System.out.println("Testing Simulated Annealing...");
+            for(int i = 0; i < testCount; ++i)
+                sa.execute(new NQueen(n));
+
+            System.out.println("Testing Genetic Algorithm...");
+            for(int i = 0; i < testCount; ++i)
+            {
+                System.out.println("Iteration " + i);
+                ga.execute();
+            }
+
+            System.out.println("Simulated Annealing average cost: " + sa.timer.getAveCost() + "\n");
+            System.out.println("Genetic Algorithm average cost: " + ga.timer.getAveCost());
+            System.out.println("Genetic Algorithm success rate: " + ga.timer.successRate() + "%");
+            System.out.println("Genetic Algorithm success total: " + ga.timer.successCount());
+        }
+        else
+        {
+            System.out.println("Simulated Annealing Final Configuration:");
+            sa.execute(new NQueen(n)).print();
+
+            System.out.print("\n");
+            System.out.println("------------------------------------------------------\n");
+
+            System.out.println("Genetic Algorithm Final Configuration:");
+            ga.execute().print();
+        }
     }
 }
